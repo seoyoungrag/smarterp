@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="defaultCodeMapper">
+
+	<insert id="insertCompnay" parameterType="companyVO">
+INSERT INTO [dbo].[company]
+           ([acc_order]
+           ,[acc_start_d]
+           ,[acc_end_d]
+           ,[com_reg_num]
+           ,[cor_reg_num]
+           ,[boss_nm]
+           ,[is_foreigner]
+           ,[citi_num]
+           ,[hq_postcode]
+           ,[hq_addr]
+           ,[hq_addr_detail]
+           ,[hq_phone1]
+           ,[hq_phone2]
+           ,[hq_fax1]
+           ,[hq_fax2]
+           ,[com_biz]
+           ,[com_cate]
+           ,[com_type]
+           ,[com_est_d]
+           ,[com_open_d]
+           ,[com_close_d]
+           ,[is_use]
+           ,[com_eng_nm]
+           ,[cor_eng_nm]
+           ,[com_eng_addr]
+           ,[com_homepage]
+           ,[com_gwpage]
+           ,[home_postcode]
+           ,[home_addr]
+           ,[home_addr_detail]
+           ,[home_phone])
+     VALUES
+           (#{accOrder}
+           ,#{accStartD}
+           ,#{accEndD}
+           ,#{comRegNum}
+           ,#{corRegNum}
+           ,#{bossNm}
+           ,#{isForeigner}
+           ,#{citiNum}
+           ,#{hqPostcode}
+           ,#{hqAddr}
+           ,#{hqAddrDetail}
+           ,#{hqPhone1}
+           ,#{hqPhone2}
+           ,#{hqFax1}
+           ,#{hqFax2}
+           ,#{comBiz}
+           ,#{comCate}
+           ,#{comType}
+           ,#{comEstD}
+           ,#{comOpenD}
+           ,#{comCloseD}
+           ,#{isUse}
+           ,#{comEngNm}
+           ,#{corEngNm}
+           ,#{comEngAddr}
+           ,#{comHomepage}
+           ,#{comGwpage}
+           ,#{homePostcode}
+           ,#{homeAddr}
+           ,#{homeAddrDetail}
+           ,#{homePhone})
+	</insert>
+
+</mapper>
