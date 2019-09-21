@@ -17,6 +17,7 @@ package kr.co.dwebss.smarterp.defaultCode.web;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 import javax.annotation.Resource;
 
@@ -57,7 +58,9 @@ public class DefualtCodeController {
 
 	@RequestMapping(value = "/companyManage.do")
 	public String selectSampleList(ModelMap model) throws Exception {
-
+		List<CompanyVO> dComList = defaultCodeService.selectCompanyList();
+		model.put("dComList", dComList);
+		
 		return "defaultCode/companyManage";
 	}
 

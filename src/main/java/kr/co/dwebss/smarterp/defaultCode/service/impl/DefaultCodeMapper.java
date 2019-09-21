@@ -1,5 +1,7 @@
 package kr.co.dwebss.smarterp.defaultCode.service.impl;
 
+import java.util.List;
+
 import org.springframework.stereotype.Repository;
 
 import egovframework.rte.psl.dataaccess.EgovAbstractMapper;
@@ -12,4 +14,7 @@ public class DefaultCodeMapper extends EgovAbstractMapper{
 		insert("defaultCodeMapper.insertCompnay", companyVO);
 	};
 
+	public List<CompanyVO> selectCompanyList() {
+		return selectList("defaultCodeMapper.selectCompanyList");
+	};
 }

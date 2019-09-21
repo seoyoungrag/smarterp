@@ -68,5 +68,13 @@ INSERT INTO [dbo].[company]
            ,#{homeAddrDetail}
            ,#{homePhone})
 	</insert>
+	
+    <select id="selectCompanyList" resultType="hashmap">
+            SELECT [com_type]
+                  ,[com_cate]
+                  ,[com_biz]
+              FROM [dbo].[company]
+            ORDER BY [acc_start_d]
+    </select>
 
 </mapper>

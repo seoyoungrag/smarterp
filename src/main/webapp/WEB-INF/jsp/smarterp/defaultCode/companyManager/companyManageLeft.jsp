@@ -25,7 +25,31 @@
 													</tr>
 												</thead>
 												<tbody class="kt-datatable__body ps" style="">
-													<tr data-row="0" class="kt-datatable__row"
+												<c:forEach var="dComList" items="${dComList}" varStatus="status">
+                                                    <tr data-row="0" class="kt-datatable__row" style="left: 0px;">
+                                                        <td	class="kt-datatable__cell--center kt-datatable__cell kt-datatable__cell--check"	data-field="id">
+                                                            <span style="width: 20px;"><label class="kt-checkbox kt-checkbox--single kt-checkbox--solid">
+                                                                <input type="checkbox" value="">&nbsp;<span></span></label>
+                                                            </span>
+                                                        </td>
+														<td class="datatable-center kt-datatable__cell"	data-field="orderDt">
+														    <span style="width:;">
+														        <c:out value="${dComList.com_type}" />
+														    </span>
+														</td>
+														<td class="datatable-center kt-datatable__cell"	data-field="orderId">
+														    <span style="width:;">
+														        <c:out value="${dComList.com_cate}" />
+														    </span>
+														</td>
+														<td class="kt-datatable__cell--sorted kt-datatable__cell" data-field="tradeNm">
+														    <span style="width:;">
+														        <c:out value="${dComList.com_biz}" />
+														    </span>
+														</td>
+                                                    </tr>
+                                                </c:forEach>
+						<!-- 							<tr data-row="0" class="kt-datatable__row"
 														style="left: 0px;">
 														<td
 															class="kt-datatable__cell--center kt-datatable__cell kt-datatable__cell--check"
@@ -53,7 +77,7 @@
 															data-field="orderId"><span style="width:;">아이큐브</span></td>
 														<td class="kt-datatable__cell--sorted kt-datatable__cell"
 															data-field="tradeNm"><span style="width:;">법인</span></td>
-													</tr>
+													</tr> -->
 													<div class="ps__rail-x" style="left: 0px; bottom: 0px;">
 														<div class="ps__thumb-x" tabindex="0"
 															style="left: 0px; width: 0px;"></div>

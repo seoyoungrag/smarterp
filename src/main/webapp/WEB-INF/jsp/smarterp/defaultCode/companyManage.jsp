@@ -53,7 +53,7 @@
 								            <span class="kt-header__topbar-icon" id="kt_quick_panel_toggler_btn"><i class="flaticon2-add-1"></i></span>
 								        </div>
 								    </div>
-							    </div
+							    </div>
 								
 								
 								<jsp:include page="include/topbarForAll.jsp" flush="true" />
@@ -77,7 +77,6 @@
 								<!--begin::Portlet-->
 								<div class="row">
 									<div class="col-xs-4 col-sm-4 col-md-4">
-
 										<jsp:include page="companyManager/companyManageLeft.jsp" flush="true" />
 									</div>
 									<div class="col-xs-8 col-sm-8 col-md-8">
