@@ -53,6 +53,9 @@ function fn_companySave(){
 }
 function fn_companyView(){
     var companyId = $("td:nth-child(1)",$($("#datatable1").find('tr.selected')[0])).text().trim();
+    if(!companyId){
+    	alert("회사를 선택해주세요.");
+    }
 	fn_goLinkToErpContent('/dc/cm/cru.do?companyId='+companyId)	;
 }
 function fn_companyDelete(){
@@ -60,7 +63,7 @@ function fn_companyDelete(){
 		if(confirm("삭제하시겠습니까?")){
 			$.ajax({						
 				type: 'post',						
-				url : '/dc/cm/dProc.do?companyId='+$("td:nth-child(1)",$($("#datatable1").find('tr.selected')[0])).text().trim(),						
+				url : getContextPath()+'/dc/cm/dProc.do?companyId='+$("td:nth-child(1)",$($("#datatable1").find('tr.selected')[0])).text().trim(),						
 				dataType: "html",						
 				success: function(data){
 					var content = $("#smartErpContent");

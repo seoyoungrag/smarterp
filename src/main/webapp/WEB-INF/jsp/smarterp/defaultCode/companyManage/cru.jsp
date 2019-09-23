@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <jsp:include page="/WEB-INF/jsp/smarterp/include/header.jsp" flush="true" />
-<script type="text/javascript" src="<c:url value='/js/companyManage.js'/>"/>
+<script type="text/javascript" src="<c:url value='/js/companyManage.js'/>"></script>
 <script type="text/javascript" src="<c:url value='/datepicker/js/bootstrap-datepicker.min.js'/>"></script>
 <link href="<c:url value='/datepicker/css/bootstrap-datepicker3.standalone.min.css'/>" rel="stylesheet" type="text/css" />
 <script>
@@ -87,7 +87,7 @@ $('.calendar').datepicker({
 							</div>
 						</div>
 						<div class="kt-portlet__body pb-0 pt-0" id="tab_parent">
-							<form action="/dc/cm/cuProc.do" method="post" id="comForm" class="needs-validation" novalidate>
+							<form action="<c:url value='/dc/cm/cuProc.do'/>" method="post" id="comForm" class="needs-validation" novalidate>
 								<input type="hidden" name="companyId" value="${company.companyId}"/>
 								<!--begin: Tab Content-->
 								<div class="tab-content kt-margin-t-20 kt-margin-b-20">
