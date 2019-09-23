@@ -2,9 +2,11 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="defaultCodeMapper">
 
-	<insert id="insertCompnay" parameterType="companyVO">
+	<insert id="insertCompany" parameterType="companyVO">
 INSERT INTO [dbo].[company]
-           ([acc_order]
+           (
+           [company_nm]
+           ,[acc_order]
            ,[acc_start_d]
            ,[acc_end_d]
            ,[com_reg_num]
@@ -34,9 +36,11 @@ INSERT INTO [dbo].[company]
            ,[home_postcode]
            ,[home_addr]
            ,[home_addr_detail]
-           ,[home_phone])
+           ,[home_phone]
+           ,[is_deleted])
      VALUES
-           (#{accOrder}
+           (#{companyNm}
+           ,#{accOrder}
            ,#{accStartD}
            ,#{accEndD}
            ,#{comRegNum}
@@ -66,15 +70,97 @@ INSERT INTO [dbo].[company]
            ,#{homePostcode}
            ,#{homeAddr}
            ,#{homeAddrDetail}
-           ,#{homePhone})
+           ,#{homePhone}
+           ,0)
 	</insert>
 	
-    <select id="selectCompanyList" resultType="hashmap">
-            SELECT [com_type]
-                  ,[com_cate]
-                  ,[com_biz]
-              FROM [dbo].[company]
-            ORDER BY [acc_start_d]
+	<insert id="updateCompany" parameterType="companyVO">
+
+UPDATE [dbo].[company]
+   SET [acc_order] = #{accOrder}
+      ,[acc_start_d] = #{accStartD}
+      ,[acc_end_d] = #{accEndD}
+      ,[com_reg_num] = #{comRegNum}
+      ,[cor_reg_num] = #{corRegNum}
+      ,[boss_nm] = #{bossNm}
+      ,[is_foreigner] = #{isForeigner}
+      ,[citi_num] = #{citiNum}
+      ,[hq_postcode] = #{hqPostcode}
+      ,[hq_addr] = #{hqAddr}
+      ,[hq_addr_detail] = #{hqAddrDetail}
+      ,[hq_phone1] = #{hqPhone1}
+      ,[hq_phone2] = #{hqPhone2}
+      ,[hq_fax1] = #{hqFax1}
+      ,[hq_fax2] = #{hqFax2}
+      ,[com_biz] = #{comBiz}
+      ,[com_cate] = #{comCate}
+      ,[com_type] = #{comType}
+      ,[com_est_d] = #{comEstD}
+      ,[com_open_d] = #{comOpenD}
+      ,[com_close_d] = #{comCloseD}
+      ,[is_use] = #{isUse}
+      ,[com_eng_nm] = #{comEngNm}
+      ,[cor_eng_nm] = #{corEngNm}
+      ,[com_eng_addr] = #{comEngAddr}
+      ,[com_homepage] = #{comHomepage}
+      ,[com_gwpage] = #{comGwpage}
+      ,[home_postcode] = #{homePostcode}
+      ,[home_addr] = #{homeAddr}
+      ,[home_addr_detail] = #{homeAddrDetail}
+      ,[home_phone] = #{homePhone}
+      ,[company_nm] = #{companyNm}
+ WHERE company_id = #{companyId}
+	</insert>
+	
+    <select id="selectCompanyList" parameterType="companyVO" resultType="companyVO">
+            SELECT
+               company_id
+	           ,company_nm
+	           ,acc_order
+	           ,acc_start_d
+	           ,acc_end_d
+	           ,com_reg_num
+	           ,cor_reg_num
+	           ,boss_nm
+	           ,is_foreigner
+	           ,citi_num
+	           ,hq_postcode
+	           ,hq_addr
+	           ,hq_addr_detail
+	           ,hq_phone1
+	           ,hq_phone2
+	           ,hq_fax1
+	           ,hq_fax2
+	           ,com_biz
+	           ,com_cate
+	           ,com_type
+	           ,com_est_d
+	           ,com_open_d
+	           ,com_close_d
+	           ,is_use
+	           ,com_eng_nm
+	           ,cor_eng_nm
+	           ,com_eng_addr
+	           ,com_homepage
+	           ,com_gwpage
+	           ,home_postcode
+	           ,home_addr
+	           ,home_addr_detail
+	           ,home_phone
+	           ,is_deleted
+              FROM dbo.company
+              WHERE 1=1
+				<if test='companyId != null and companyId != "0"'>
+				AND company_id = #{companyId}
+				</if>
+				AND is_deleted = 0
+            ORDER BY company_nm
     </select>
+    
+	<update id="deleteCompanyManage" parameterType="companyVO">
+		UPDATE [dbo].[company]
+		   SET [is_deleted] = #{isDeleted}
+		 WHERE company_id = #{companyId}
+	</update>
 
 </mapper>

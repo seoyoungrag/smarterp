@@ -8,6 +8,7 @@ public class CompanyVO{
 
 	private static final long serialVersionUID = 1L;
 
+	private int companyId;
 	private int accOrder;
 	@DateTimeFormat(pattern = "yyyy/MM/dd")
     private Date accStartD;
@@ -44,6 +45,24 @@ public class CompanyVO{
 	private String homeAddr;
 	private String homeAddrDetail;
 	private String homePhone;
+	private String companyNm;
+	private String isDeleted;
+	
+	public String getIsDeleted() {
+		return isDeleted;
+	}
+	public void setIsDeleted(String isDeleted) {
+		this.isDeleted = isDeleted;
+	}
+	public String getCompanyNm() {
+		return companyNm;
+	}
+	public void setCompanyNm(String companyNm) {
+		this.companyNm = companyNm;
+	}
+	public void setHomePhone(String homePhone) {
+		this.homePhone = homePhone;
+	}
 	public int getAccOrder() {
 		return accOrder;
 	}
@@ -227,10 +246,12 @@ public class CompanyVO{
 	public String getHomePhone() {
 		return homePhone;
 	}
-	public void setHomePhon(String homePhone) {
-		this.homePhone = homePhone;
+	public int getCompanyId() {
+		return companyId;
 	}
-	
+	public void setCompanyId(int companyId) {
+		this.companyId = companyId;
+	}
 	
 	
 }

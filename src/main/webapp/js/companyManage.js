@@ -1,4 +1,3 @@
-
 (function() {
 	'use strict';
 	window.addEventListener('load', function() {
@@ -21,9 +20,64 @@ function isInt(value) {
 	  return !isNaN(value) && 
 	         parseInt(Number(value)) == value && 
 	         !isNaN(parseInt(value, 10));
+}
+function fn_companySave(){
+	var isValid = true;
+	if ($("#comForm")[0].checkValidity() === false) {
+		event.preventDefault();
+		event.stopPropagation();
+		isValid = false;
 	}
+	if(isInt($("#comForm input[name=accOrder]").val())){
+		$("#comForm input[name=accOrder]").next().hide();
+	} else{
+		$("#comForm input[name=accOrder]").next().show();
+		event.preventDefault();
+		event.stopPropagation();
+		isValid = false;
+	}
+	$("#comForm")[0].classList.add('was-validated');
+	if(isValid == true){
+		$.ajax({						
+			type: 'post',						
+			url : $("#comForm")[0].action,			
+			data: $("#comForm").serialize(),
+			dataType: "html",						
+			success: function(data){
+				var content = $("#smartErpContent");
+				content.empty();
+				content.append(data);	
+			}					
+		});
+	}
+}
+function fn_companyView(){
+    var companyId = $("td:nth-child(1)",$($("#datatable1").find('tr.selected')[0])).text().trim();
+	fn_goLinkToErpContent('/dc/cm/cru.do?companyId='+companyId)	;
+}
+function fn_companyDelete(){
+	if($("td:nth-child(1)",$($("#datatable1").find('tr.selected')[0])).text().trim()!=''){
+		if(confirm("삭제하시겠습니까?")){
+			$.ajax({						
+				type: 'post',						
+				url : '/dc/cm/dProc.do?companyId='+$("td:nth-child(1)",$($("#datatable1").find('tr.selected')[0])).text().trim(),						
+				dataType: "html",						
+				success: function(data){
+					var content = $("#smartErpContent");
+					content.empty();
+					content.append(data);	
+				}					
+			});		
+		}
+  		return;
+	}else{
+		alert('리스트에서 회사를 선택해주세요.');
+  		return;
+	}
+}
 $(document).ready(function($){
 
+	/*
 	$('#comForm').submit(function(event) {
 		if (this.checkValidity() === false) {
 			event.preventDefault();
@@ -38,20 +92,6 @@ $(document).ready(function($){
 		}
 		this.classList.add('was-validated');
 	});
-	$("#saveComPC,#saveComMOBILE").click(function() {
-		$('#comForm').submit();
-	});	
-	$.fn.datepicker.dates['kr'] = {
-			days: ["일요일", "월요일", "화요일", "수요일", "목요일", "금요일", "토요일", "일요일"],
-			daysShort: ["일", "월", "화", "수", "목", "금", "토", "일"],
-			daysMin: ["일", "월", "화", "수", "목", "금", "토", "일"],
-			months: ["1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월", "9월", "10월", "11월", "12월"],
-			monthsShort: ["1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월", "9월", "10월", "11월", "12월"],
-	        clear: "초기화"
-		};
-	$('.calendar').datepicker({
-	    format: "yyyy/mm/dd",
-	    clearBtn: true,
-	    language: "kr"
-	});
+	*/
 });
+

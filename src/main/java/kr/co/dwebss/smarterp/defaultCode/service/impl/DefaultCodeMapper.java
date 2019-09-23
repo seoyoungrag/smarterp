@@ -10,11 +10,19 @@ import kr.co.dwebss.smarterp.defaultCode.service.CompanyVO;
 @Repository("defaultCodeMapper")
 public class DefaultCodeMapper extends EgovAbstractMapper{
 
-	void insertCompnay(CompanyVO companyVO) {
-		insert("defaultCodeMapper.insertCompnay", companyVO);
+	void insertCompany(CompanyVO companyVO) {
+		insert("defaultCodeMapper.insertCompany", companyVO);
 	};
 
-	public List<CompanyVO> selectCompanyList() {
-		return selectList("defaultCodeMapper.selectCompanyList");
+	public List<CompanyVO> selectCompanyList(CompanyVO companyVO) {
+		return selectList("defaultCodeMapper.selectCompanyList", companyVO);
+	}
+
+	public void updateCompany(CompanyVO companyVO) {
+		update("defaultCodeMapper.updateCompany", companyVO);
+	}
+
+	public void deleteCompanyManage(CompanyVO companyVO) {
+		delete("defaultCodeMapper.deleteCompanyManage", companyVO);
 	};
 }

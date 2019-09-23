@@ -27,13 +27,23 @@ public class DefaultCodeServiceImpl extends EgovAbstractServiceImpl implements D
 
 	@Override
 	public void addCompanyManage(CompanyVO companyVO) {
-		defaultCodeMapper.insertCompnay(companyVO);
+		defaultCodeMapper.insertCompany(companyVO);
 	}
 	
 	@Override
-	public List<CompanyVO> selectCompanyList() {
-		List<CompanyVO> dComList = defaultCodeMapper.selectCompanyList();
-		return dComList;
+	public List<CompanyVO> selectCompanyList(CompanyVO companyVO) {
+		return defaultCodeMapper.selectCompanyList(companyVO);
+	}
+
+	@Override
+	public void updateCompanyManage(CompanyVO companyVO) {
+		defaultCodeMapper.updateCompany(companyVO);
+	}
+
+	@Override
+	public void deleteCompanyManage(CompanyVO companyVO) {
+		defaultCodeMapper.deleteCompanyManage(companyVO);
+		
 	}
 
 }

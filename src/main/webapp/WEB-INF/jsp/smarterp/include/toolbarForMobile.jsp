@@ -1,10 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!-- begin:: Header Mobile -->
 <div id="kt_header_mobile" class="kt-header-mobile  kt-header-mobile--fixed ">
     <div class="kt-header-mobile__logo">
         <a href="./index.html">
-            <img alt="Logo" src="./media/logos/logo-9.png" />
+            <img alt="Logo" src="<c:url value='/media/logos/logo-9.png'/>" />
         </a>
     </div>
     <div class="kt-header-mobile__toolbar">

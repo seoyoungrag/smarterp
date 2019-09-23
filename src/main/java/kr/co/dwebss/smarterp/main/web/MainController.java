@@ -13,13 +13,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package kr.co.dwebss.smarterp.defaultCode.web;
+package kr.co.dwebss.smarterp.main.web;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
@@ -32,6 +33,8 @@ import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.support.SessionStatus;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+import org.springframework.web.util.UriComponents;
 import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import egovframework.rte.fdl.property.EgovPropertyService;
@@ -39,7 +42,7 @@ import kr.co.dwebss.smarterp.defaultCode.service.CompanyVO;
 import kr.co.dwebss.smarterp.defaultCode.service.DefaultCodeService;
 
 @Controller
-public class DefualtCodeController {
+public class MainController {
 
 	@InitBinder
 	public void initBinder(WebDataBinder binder) {
@@ -56,27 +59,9 @@ public class DefualtCodeController {
 	@Autowired
 	private DefaultCodeService defaultCodeService;
 
-	@RequestMapping(value = "/companyManage.do")
-	public String selectSampleList(ModelMap model) throws Exception {
-		List<CompanyVO> dComList = defaultCodeService.selectCompanyList();
-		model.put("dComList", dComList);
-		
-		return "defaultCode/companyManage";
+	@RequestMapping(value = {"/smartErp.do"})
+	public String main(HttpServletRequest request, ModelMap model) throws Exception {
+			return "smartErp";
 	}
 
-	@RequestMapping(value = "/addCompanyManage.do")
-	public String addCompanyManage(@ModelAttribute("companyVO") CompanyVO companyVO, BindingResult result,
-			SessionStatus status, Model model) throws Exception {
-		System.out.println("1");
-		System.out.println(companyVO);
-		defaultCodeService.addCompanyManage(companyVO);
-		/*
-		 * // Server-Side Validation beanValidator.validate(companyVO, bindingResult);
-		 * 
-		 * if (bindingResult.hasErrors()) { model.addAttribute("companyVO", companyVO);
-		 * return "defaultCode/companyManage"; }
-		 */
-		// sampleService.insertSample(sampleVO);
-		return "forward:/companyManage.do";
-	}
 }

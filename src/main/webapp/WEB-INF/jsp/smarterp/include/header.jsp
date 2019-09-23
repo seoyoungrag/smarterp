@@ -26,23 +26,60 @@
             });
         </script>
         <!--end::Fonts -->
-
         <!--begin::Page Vendors Styles(used by this page) -->
-        <link href="./vendors/custom/datatables/datatables.bundle.css" rel="stylesheet" type="text/css" />
+        <link href="<c:url value='/vendors/custom/datatables/datatables.bundle.css'/>" rel="stylesheet" type="text/css" />
         <!--end::Page Vendors Styles -->
-
-        <!--begin::Global Theme Styles(used by all pages) -->
-        <link href="./vendors/global/vendors.bundle.css" rel="stylesheet" type="text/css" />
-        <link href="./css/demo2/style.bundle.css" rel="stylesheet" type="text/css" />
-        <!--end::Global Theme Styles -->
-
         <!--begin::Layout Skins(used by all pages) -->
-
-        <link href="./css/demo2/skins/aside/brand.css" rel="stylesheet" type="text/css" />
+        <link href="<c:url value='/css/demo2/skins/aside/brand.css'/>" rel="stylesheet" type="text/css" />
         <!--end::Layout Skins -->
+        <link rel="shortcut icon" href="<c:url value='/media/logos/favicon.ico'/>" />
+        <!-- begin::Global Config(global config for global JS sciprts) -->
+		<script>
+	     var KTAppOptions = {
+	         "colors": {
+	             "state": {
+	                 "brand": "#5578eb",
+	                 "metal": "#c4c5d6",
+	                 "light": "#ffffff",
+	                 "accent": "#00c5dc",
+	                 "primary": "#5867dd",
+	                 "success": "#34bfa3",
+	                 "info": "#36a3f7",
+	                 "warning": "#ffb822",
+	                 "danger": "#fd3995",
+	                 "focus": "#9816f4"
+	             },
+	             "base": {
+	                 "label": [
+	                     "#c5cbe3",
+	                     "#a1a8c3",
+	                     "#3d4465",
+	                     "#3e4466"
+	                 ],
+	                 "shape": [
+	                     "#f0f3ff",
+	                     "#d9dffa",
+	                     "#afb4d4",
+	                     "#646c9a"
+	                 ]
+	             }
+	         }
+	     };
+	 </script>
 
-        <link rel="shortcut icon" href="./media/logos/favicon.ico" />
-        <style type="text/css">
+		<!--begin::Global Theme Bundle(used by all pages) -->
+		
+		<script src="<c:url value='/vendors/global/vendors.bundle.js'/>" type="text/javascript"></script>
+		<link href="<c:url value='/vendors/global/vendors.bundle.css'/>" rel="stylesheet" type="text/css" />
+		<script src="<c:url value='/js/demo2/scripts.bundle.js'/>" type="text/javascript"></script>
+		<link href="<c:url value='/css/demo2/style.bundle.css'/>" rel="stylesheet" type="text/css" />
+		<!--end::Global Theme Bundle -->
+		<!-- end::Global Config -->
+        
+		<script type="text/javascript" src="<c:url value='/js/jquery-2.2.4.min.js'/>"></script>
+		<script src="<c:url value='/vendors/custom/datatables/datatables.bundle.js'/>" type="text/javascript"></script>
+		<script type="text/javascript" src="<c:url value='/js/common.js'/>"></script>
+		<style type="text/css">
             .text-muted {
                 display: none !important;
             }
@@ -114,10 +151,6 @@
                 text-align: center !important;
             }
         </style>
-        
-		<script type="text/javascript" src="<c:url value='/js/jquery-2.2.4.min.js'/>"></script>
-		<script type="text/javascript" src="<c:url value='/datepicker/js/bootstrap-datepicker.min.js'/>"></script>
-		<link href="/datepicker/css/bootstrap-datepicker3.standalone.min" rel="stylesheet" type="text/css" />
-		
+	<!--end::Page Scripts -->
     </head>
     <!-- end::Head -->

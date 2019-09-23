@@ -6,5 +6,9 @@ public interface DefaultCodeService {
 
 	void addCompanyManage(CompanyVO companyVO);
 
-	public List<CompanyVO> selectCompanyList();
+	public List<CompanyVO> selectCompanyList(CompanyVO companyVO);
+
+	void updateCompanyManage(CompanyVO companyVO);
+
+	void deleteCompanyManage(CompanyVO companyVO);
 }
