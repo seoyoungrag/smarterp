@@ -3,10 +3,10 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>kr.co.dwebss</groupId>
-	<artifactId>smarterp</artifactId>
+	<artifactId>smarterp_new</artifactId>
 	<packaging>war</packaging>
 	<version>1.0.0</version>
-	<name>smarterp</name>
+	<name>smarterp_new</name>
 	<url>http://www.egovframe.go.kr</url>
 
 	<licenses>

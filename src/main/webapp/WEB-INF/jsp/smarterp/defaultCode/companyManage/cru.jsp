@@ -58,12 +58,10 @@ $('.calendar').datepicker({
 			</div>
 			<div class="kt-subheader__toolbar">
 			    <div class="kt-subheader__wrapper">
-			        <a id="saveComPC" href="#" class="btn btn-icon btn btn-label btn-label-brand btn-bold" data-toggle="kt-tooltip" title="" data-placement="top" data-original-title="저장">
-			        <i class="flaticon2-writing"></i></a>
-			        <a href="#" class="btn btn-icon btn btn-label btn-label-brand btn-bold" data-toggle="kt-tooltip" title="" data-placement="top" data-original-title="추가" d="companyAddBtn2">
-			        <i class="flaticon2-add-1"></i></a>
-			        <a href="#" class="btn btn-icon btn btn-label btn-label-brand btn-bold" data-toggle="kt-tooltip" title="" data-placement="top" data-original-title="삭제" d="companyDeleteBtn2">
-			        <i class="flaticon2-trash"></i></a>
+			        <a href="javascript:fn_goLinkToErpContent('/dc/cm/list.do');" class="btn btn-icon btn btn-label btn-label-brand btn-bold" data-toggle="kt-tooltip" title="" data-placement="top" data-original-title="추가" d="companyAddBtn2">
+			        취소</a>
+			        <a href="javascript:fn_companySave();" class="btn btn-icon btn btn-label btn-label-brand btn-bold" data-toggle="kt-tooltip" title="" data-placement="top" data-original-title="삭제" d="companyDeleteBtn2">
+			        저장</a>
 			    </div>
 			</div>
 		</div>

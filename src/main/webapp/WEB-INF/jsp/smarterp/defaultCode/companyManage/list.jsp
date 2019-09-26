@@ -32,14 +32,14 @@ tr.selected {
 		</div>
 	</div>
 	<div class="kt-header__topbar">
-		<div class="kt-header__topbar-item" data-toggle="kt-tooltip" title="" data-placement="right" >
+		<div class="kt-header__topbar-item" data-toggle="kt-tooltip" title="" data-placement="right" onclick="javascript:fn_goLinkToErpContent('/dc/cm/cru.do');">
 	        <div class="kt-header__topbar-wrapper">
-	            <span class="kt-header__topbar-icon" onclick="javascript:fn_goLinkToErpContent('/dc/cm/cru.do');">등록<!-- <i class="flaticon2-add-1"></i> --></span>
+	            <span class="kt-header__topbar-icon">등록<!-- <i class="flaticon2-add-1"></i> --></span>
 	        </div>
 	    </div>
-		<div class="kt-header__topbar-item" data-toggle="kt-tooltip" title="" data-placement="right" >
+		<div class="kt-header__topbar-item" data-toggle="kt-tooltip" title="" data-placement="right" onclick="javascript:fn_companyView();">
 	        <div class="kt-header__topbar-wrapper">
-	            <span class="kt-header__topbar-icon" onclick="javascript:fn_companyView();">수정<!-- <i class="flaticon2-add-1"></i> --></span>
+	            <span class="kt-header__topbar-icon">수정<!-- <i class="flaticon2-add-1"></i> --></span>
 	        </div>
 	    </div>
 		<div class="kt-header__topbar-item" data-toggle="kt-tooltip" title="" data-placement="right" onclick="javascript:fn_companyDelete();">
@@ -60,12 +60,12 @@ tr.selected {
 			</div>
 			<div class="kt-subheader__toolbar">
 			    <div class="kt-subheader__wrapper">
-			        <a id="saveComPC" href="#" class="btn btn-icon btn btn-label btn-label-brand btn-bold" data-toggle="kt-tooltip" title="" data-placement="top" data-original-title="저장">
-			        <i class="flaticon2-writing"></i></a>
-			        <a href="#" class="btn btn-icon btn btn-label btn-label-brand btn-bold" data-toggle="kt-tooltip" title="" data-placement="top" data-original-title="추가" d="companyAddBtn2">
-			        <i class="flaticon2-add-1"></i></a>
-			        <a href="#" class="btn btn-icon btn btn-label btn-label-brand btn-bold" data-toggle="kt-tooltip" title="" data-placement="top" data-original-title="삭제" d="companyDeleteBtn2">
-			        <i class="flaticon2-trash"></i></a>
+			        <a href="javascript:fn_goLinkToErpContent('/dc/cm/cru.do');" class="btn btn-icon btn btn-label btn-label-brand btn-bold" data-toggle="kt-tooltip" title="" data-placement="top" data-original-title="저장">
+			        등록</a>
+			        <a href="javascript:fn_companyView();" class="btn btn-icon btn btn-label btn-label-brand btn-bold" data-toggle="kt-tooltip" title="" data-placement="top" data-original-title="추가" d="companyAddBtn2">
+			        수정</a>
+			        <a href="javascript:fn_companyDelete();" class="btn btn-icon btn btn-label btn-label-brand btn-bold" data-toggle="kt-tooltip" title="" data-placement="top" data-original-title="삭제" d="companyDeleteBtn2">
+			        삭제</a>
 			    </div>
 			</div>
 	</div>

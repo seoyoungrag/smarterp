@@ -58,6 +58,13 @@ public class DefaultCodeController {
 
 	@Autowired
 	private DefaultCodeService defaultCodeService;
+	
+	@RequestMapping(value = "/companyManage.do")
+	public String selectSampleList(@ModelAttribute("companyVO") CompanyVO companyVO, ModelMap model) throws Exception {
+		List<CompanyVO> companyList = defaultCodeService.selectCompanyList(companyVO);
+		model.addAttribute("companyList", companyList);
+		return "defaultCode/companyManage";
+	}
 
 	@RequestMapping(value = {"/dc/cm/list.do"})
 	public String selectSampleList(HttpServletRequest request, @ModelAttribute("companyVO") CompanyVO companyVO, ModelMap model) throws Exception {
@@ -96,13 +103,48 @@ public class DefaultCodeController {
 	@RequestMapping(value = "/dc/cm/dProc.do") //delete procedure
 	public String deleteCompanyManage(HttpServletRequest request, @ModelAttribute("companyVO") CompanyVO companyVO, BindingResult result,
 			SessionStatus status, Model model) throws Exception {
-			defaultCodeService.deleteCompanyManage(companyVO);
 			companyVO.setIsDeleted("1");
+			defaultCodeService.deleteCompanyManage(companyVO);
 
 			UriComponents uri = ServletUriComponentsBuilder
 	                .fromServletMapping(request)
 	                .fromPath("/dc/cm/list.do")
 	                .build();
 			return "redirect:"+uri.toUriString();
+	}
+
+	@RequestMapping(value = "/dc/cm/dProcTab.do") //delete procedure
+	public String deleteCompanyManageTab(HttpServletRequest request, @ModelAttribute("companyVO") CompanyVO companyVO, BindingResult result,
+			SessionStatus status, Model model) throws Exception {
+			companyVO.setIsDeleted("1");
+			defaultCodeService.deleteCompanyManage(companyVO);
+			List<CompanyVO> companyList = defaultCodeService.selectCompanyList(companyVO);
+			model.addAttribute("companyList", companyList);
+			return "defaultCode/companyManage/listDetail";
+	}
+
+	@RequestMapping(value = "/dc/cm/cuProcTab.do") //create&&update procedure
+	public String addCompanyManageTab(HttpServletRequest request,  @ModelAttribute("companyVO") CompanyVO companyVO, BindingResult result,
+			SessionStatus status, Model model) throws Exception {
+		if(companyVO.getCompanyId()!=0) {
+			defaultCodeService.updateCompanyManage(companyVO);
+		}else {
+			defaultCodeService.addCompanyManage(companyVO);
+		}
+		companyVO = new CompanyVO();
+		List<CompanyVO> companyList = defaultCodeService.selectCompanyList(companyVO);
+		model.addAttribute("companyList", companyList);
+		return "defaultCode/companyManage/listDetail";
+	}
+
+	@RequestMapping(value = "/dc/cm/cruTab.do") //create&read&update
+	public String companyRegistTab(@ModelAttribute("companyVO") CompanyVO companyVO, HttpServletRequest request,  BindingResult result,
+			SessionStatus status, Model model) throws Exception {
+		if(companyVO.getCompanyId()!=0) {
+			List<CompanyVO> companyList = defaultCodeService.selectCompanyList(companyVO);
+			model.addAttribute("company", companyList.get(0));
+		}
+		model.addAttribute("isEdit", true);
+		return "defaultCode/companyManage/cruDetail";
 	}
 }

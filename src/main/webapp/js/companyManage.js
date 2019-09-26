@@ -24,16 +24,12 @@ function isInt(value) {
 function fn_companySave(){
 	var isValid = true;
 	if ($("#comForm")[0].checkValidity() === false) {
-		event.preventDefault();
-		event.stopPropagation();
 		isValid = false;
 	}
 	if(isInt($("#comForm input[name=accOrder]").val())){
 		$("#comForm input[name=accOrder]").next().hide();
 	} else{
 		$("#comForm input[name=accOrder]").next().show();
-		event.preventDefault();
-		event.stopPropagation();
 		isValid = false;
 	}
 	$("#comForm")[0].classList.add('was-validated');
