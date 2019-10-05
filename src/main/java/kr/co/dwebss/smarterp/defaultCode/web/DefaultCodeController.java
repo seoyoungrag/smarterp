@@ -40,6 +40,7 @@ import org.springmodules.validation.commons.DefaultBeanValidator;
 import egovframework.rte.fdl.property.EgovPropertyService;
 import kr.co.dwebss.smarterp.defaultCode.service.CompanyVO;
 import kr.co.dwebss.smarterp.defaultCode.service.DefaultCodeService;
+import kr.co.dwebss.smarterp.defaultCode.service.WorkplaceVO;
 
 @Controller
 public class DefaultCodeController {
@@ -60,19 +61,20 @@ public class DefaultCodeController {
 	private DefaultCodeService defaultCodeService;
 	
 	@RequestMapping(value = "/companyManage.do")
-	public String selectSampleList(@ModelAttribute("companyVO") CompanyVO companyVO, ModelMap model) throws Exception {
+	public String companyManage(@ModelAttribute("companyVO") CompanyVO companyVO, ModelMap model) throws Exception {
 		List<CompanyVO> companyList = defaultCodeService.selectCompanyList(companyVO);
 		model.addAttribute("companyList", companyList);
 		return "defaultCode/companyManage";
 	}
-
+	/*
 	@RequestMapping(value = {"/dc/cm/list.do"})
 	public String selectSampleList(HttpServletRequest request, @ModelAttribute("companyVO") CompanyVO companyVO, ModelMap model) throws Exception {
 		List<CompanyVO> companyList = defaultCodeService.selectCompanyList(companyVO);
 		model.addAttribute("companyList", companyList);
 		return "defaultCode/companyManage/list";
 	}
-
+	 */
+	/*
 	@RequestMapping(value = "/dc/cm/cru.do") //create&read&update
 	public String companyRegist(@ModelAttribute("companyVO") CompanyVO companyVO, HttpServletRequest request,  BindingResult result,
 			SessionStatus status, Model model) throws Exception {
@@ -84,6 +86,8 @@ public class DefaultCodeController {
 		return "defaultCode/companyManage/cru";
 	}
 	
+	*/
+	/*
 	@RequestMapping(value = "/dc/cm/cuProc.do") //create&&update procedure
 	public String addCompanyManage(HttpServletRequest request,  @ModelAttribute("companyVO") CompanyVO companyVO, BindingResult result,
 			SessionStatus status, Model model) throws Exception {
@@ -112,7 +116,7 @@ public class DefaultCodeController {
 	                .build();
 			return "redirect:"+uri.toUriString();
 	}
-
+	*/
 	@RequestMapping(value = "/dc/cm/dProcTab.do") //delete procedure
 	public String deleteCompanyManageTab(HttpServletRequest request, @ModelAttribute("companyVO") CompanyVO companyVO, BindingResult result,
 			SessionStatus status, Model model) throws Exception {
@@ -146,5 +150,49 @@ public class DefaultCodeController {
 		}
 		model.addAttribute("isEdit", true);
 		return "defaultCode/companyManage/cruDetail";
+	}
+
+	/*사업장관리 시작*/
+	@RequestMapping(value = "/workplaceManage.do")
+	public String workplaceManage(@ModelAttribute("workplaceVO") WorkplaceVO workplaceVO, ModelMap model) throws Exception {
+		List<WorkplaceVO> workplaceList = defaultCodeService.selectWorkplaceList(workplaceVO);
+		model.addAttribute("workplaceList", workplaceList);
+		return "defaultCode/workplaceManage";
+	}
+
+
+	@RequestMapping(value = "/dc/wm/dProcTab.do") //delete procedure
+	public String deleteWorkspaceManageTab(HttpServletRequest request, @ModelAttribute("workplaceVO") WorkplaceVO workplaceVO, BindingResult result,
+			SessionStatus status, Model model) throws Exception {
+			workplaceVO.setIsDeleted("1");
+			defaultCodeService.deleteWorkplaceManage(workplaceVO);
+			List<WorkplaceVO> workplaceList = defaultCodeService.selectWorkplaceList(workplaceVO);
+			model.addAttribute("workplaceList", workplaceList);
+			return "defaultCode/workplaceManage/listDetail";
+	}
+
+	@RequestMapping(value = "/dc/wm/cuProcTab.do") //create&&update procedure
+	public String addWorkspaceManageTab(HttpServletRequest request,  @ModelAttribute("workplaceVO") WorkplaceVO workplaceVO, BindingResult result,
+			SessionStatus status, Model model) throws Exception {
+		if(workplaceVO.getWorkplaceId()!=0) {
+			defaultCodeService.updateWorkplaceManage(workplaceVO);
+		}else {
+			defaultCodeService.addWorkplaceManage(workplaceVO);
+		}
+		workplaceVO = new WorkplaceVO();
+		List<WorkplaceVO> workspaceList = defaultCodeService.selectWorkplaceList(workplaceVO);
+		model.addAttribute("workspaceList", workspaceList);
+		return "defaultCode/workplaceManage/listDetail";
+	}
+
+	@RequestMapping(value = "/dc/wm/cruTab.do") //create&read&update
+	public String workspaceRegistTab(@ModelAttribute("workplaceVO") WorkplaceVO workplaceVO, HttpServletRequest request,  BindingResult result,
+			SessionStatus status, Model model) throws Exception {
+		if(workplaceVO.getWorkplaceId()!=0) {
+			List<WorkplaceVO> workspaceList = defaultCodeService.selectWorkplaceList(workplaceVO);
+			model.addAttribute("workspace", workspaceList.get(0));
+		}
+		model.addAttribute("isEdit", true);
+		return "defaultCode/workplaceManage/cruDetail";
 	}
 }

@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 
 import egovframework.rte.psl.dataaccess.EgovAbstractMapper;
 import kr.co.dwebss.smarterp.defaultCode.service.CompanyVO;
+import kr.co.dwebss.smarterp.defaultCode.service.WorkplaceVO;
 
 @Repository("defaultCodeMapper")
 public class DefaultCodeMapper extends EgovAbstractMapper{
@@ -24,5 +25,21 @@ public class DefaultCodeMapper extends EgovAbstractMapper{
 
 	public void deleteCompanyManage(CompanyVO companyVO) {
 		delete("defaultCodeMapper.deleteCompanyManage", companyVO);
+	}
+
+	public void insertWorkspace(WorkplaceVO workplaceVO) {
+		insert("defaultCodeMapper.insertWorkplace", workplaceVO);
+	}
+
+	public List<WorkplaceVO> selectWorkspaceList(WorkplaceVO workplaceVO) {
+		return selectList("defaultCodeMapper.selectWorkplaceList", workplaceVO);
+	}
+
+	public void updateWorkspace(WorkplaceVO workplaceVO) {
+		update("defaultCodeMapper.updateWorkplace", workplaceVO);
+	}
+
+	public void deleteWorkspaceManage(WorkplaceVO workplaceVO) {
+		delete("defaultCodeMapper.deleteWorkplaceManage", workplaceVO);
 	};
 }

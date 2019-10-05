@@ -8,5 +8,6 @@
     <typeAliases>
 		<typeAlias alias="egovMap" type="egovframework.rte.psl.dataaccess.util.EgovMap"/>
 		<typeAlias alias="companyVO" type="kr.co.dwebss.smarterp.defaultCode.service.CompanyVO"/>
+		<typeAlias alias="workplaceVO" type="kr.co.dwebss.smarterp.defaultCode.service.WorkplaceVO"/>
     </typeAliases>
 </configuration>

@@ -6,8 +6,6 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 public class CompanyVO{
 
-	private static final long serialVersionUID = 1L;
-
 	private int companyId;
 	private int accOrder;
 	@DateTimeFormat(pattern = "yyyy/MM/dd")

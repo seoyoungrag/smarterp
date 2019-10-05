@@ -11,4 +11,12 @@ public interface DefaultCodeService {
 	void updateCompanyManage(CompanyVO companyVO);
 
 	void deleteCompanyManage(CompanyVO companyVO);
+
+	void addWorkplaceManage(WorkplaceVO workplaceVO);
+
+	public List<WorkplaceVO> selectWorkplaceList(WorkplaceVO workplaceVO);
+
+	void updateWorkplaceManage(WorkplaceVO workplaceVO);
+
+	void deleteWorkplaceManage(WorkplaceVO workplaceVO);
 }
