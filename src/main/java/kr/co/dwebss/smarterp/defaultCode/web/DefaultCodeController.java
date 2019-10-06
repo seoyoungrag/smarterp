@@ -122,6 +122,7 @@ public class DefaultCodeController {
 			SessionStatus status, Model model) throws Exception {
 			companyVO.setIsDeleted("1");
 			defaultCodeService.deleteCompanyManage(companyVO);
+			companyVO = new CompanyVO();
 			List<CompanyVO> companyList = defaultCodeService.selectCompanyList(companyVO);
 			model.addAttribute("companyList", companyList);
 			return "defaultCode/companyManage/listDetail";
@@ -166,6 +167,7 @@ public class DefaultCodeController {
 			SessionStatus status, Model model) throws Exception {
 			workplaceVO.setIsDeleted("1");
 			defaultCodeService.deleteWorkplaceManage(workplaceVO);
+			workplaceVO = new WorkplaceVO();
 			List<WorkplaceVO> workplaceList = defaultCodeService.selectWorkplaceList(workplaceVO);
 			model.addAttribute("workplaceList", workplaceList);
 			return "defaultCode/workplaceManage/listDetail";
@@ -180,8 +182,8 @@ public class DefaultCodeController {
 			defaultCodeService.addWorkplaceManage(workplaceVO);
 		}
 		workplaceVO = new WorkplaceVO();
-		List<WorkplaceVO> workspaceList = defaultCodeService.selectWorkplaceList(workplaceVO);
-		model.addAttribute("workspaceList", workspaceList);
+		List<WorkplaceVO> workplaceList = defaultCodeService.selectWorkplaceList(workplaceVO);
+		model.addAttribute("workplaceList", workplaceList);
 		return "defaultCode/workplaceManage/listDetail";
 	}
 
@@ -189,8 +191,8 @@ public class DefaultCodeController {
 	public String workspaceRegistTab(@ModelAttribute("workplaceVO") WorkplaceVO workplaceVO, HttpServletRequest request,  BindingResult result,
 			SessionStatus status, Model model) throws Exception {
 		if(workplaceVO.getWorkplaceId()!=0) {
-			List<WorkplaceVO> workspaceList = defaultCodeService.selectWorkplaceList(workplaceVO);
-			model.addAttribute("workspace", workspaceList.get(0));
+			List<WorkplaceVO> workplaceList = defaultCodeService.selectWorkplaceList(workplaceVO);
+			model.addAttribute("workplace", workplaceList.get(0));
 		}
 		model.addAttribute("isEdit", true);
 		return "defaultCode/workplaceManage/cruDetail";

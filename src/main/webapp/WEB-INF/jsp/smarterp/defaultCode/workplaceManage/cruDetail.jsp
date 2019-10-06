@@ -10,14 +10,17 @@
 										<a class="nav-link active" data-toggle="tab" href="#kt_users_edit_tab_1" role="tab" aria-selected="true"> <i class="flaticon2-calendar-3"></i> 기본등록사항</a>
 									</li>
 									<li class="nav-item">
-										<a class="nav-link" data-toggle="tab" href="#kt_users_edit_tab_2" role="tab" aria-selected="false"> <i class="flaticon2-protected"></i> 추가등록사항</a>
+										<a class="nav-link" data-toggle="tab" href="#kt_users_edit_tab_2" role="tab" aria-selected="true"> <i class="flaticon2-calendar-3"></i> 신고관련사항</a>
+									</li>
+									<li class="nav-item">
+										<a class="nav-link" data-toggle="tab" href="#kt_users_edit_tab_3" role="tab" aria-selected="false"> <i class="flaticon2-protected"></i> 추가등록사항</a>
 									</li>
 								</ul>
 							</div>
 						</div>
 						<div class="kt-portlet__body pb-0 pt-0" id="tab_parent">
 							<form action="<c:url value='/dc/cm/cuProc.do'/>" method="post" id="comForm" class="needs-validation" novalidate>
-								<input type="hidden" name="workplaceId" value="${company.workplaceId}"/>
+								<input type="hidden" name="workplaceId" value="${workplace.workplaceId}"/>
 								<!--begin: Tab Content-->
 								<div class="tab-content kt-margin-t-20 kt-margin-b-20">
 									<!--begin: Tab-->
@@ -25,6 +28,9 @@
 									<!--end: Tab-->
 									<!--begin: Tab-->
 									<jsp:include page="cru_tab2.jsp" flush="true" />
+									<!--end: Tab-->
+									<!--begin: Tab-->
+									<jsp:include page="cru_tab3.jsp" flush="true" />
 									<!--end: Tab-->
 								</div>
 							</form>		

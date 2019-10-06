@@ -10,7 +10,7 @@ $(document).ready(function($){
 	$("#datatable1 tr").click(function () {
 	    $('.selected').removeClass('selected');
 	    $(this).addClass("selected");
-		fn_companySelect_tab();
+	    fn_workplaceSelect_tab();
 	});
 });
 </script>
@@ -51,18 +51,12 @@ function fn_saveBtnClicked_tab(){
 		if ($("#comForm")[0].checkValidity() === false) {
 			isValid = false;
 		}
-		if(isInt($("#comForm input[name=accOrder]").val())){
-			$("#comForm input[name=accOrder]").next().hide();
-		} else{
-			$("#comForm input[name=accOrder]").next().show();
-			isValid = false;
-		}
 		$("#comForm")[0].classList.add('was-validated');
 		if(isValid == true){
 			if(confirm("저장하시겠습니까?")){
 				$.ajax({						
 					type: 'post',						
-					url : getContextPath()+'/dc/cm/cuProcTab.do',
+					url : getContextPath()+'/dc/wm/cuProcTab.do',
 					data: $("#comForm").serialize(),
 					dataType: "html",						
 					success: function(data){
@@ -72,22 +66,32 @@ function fn_saveBtnClicked_tab(){
 						$("input, select", "#comForm").prop('disabled',true);
 						$(".saveBtn").hide();
 						$(".addBtn").show();
+						$("#datatable1 tr").click(function () {
+						    $('.selected').removeClass('selected');
+						    $(this).addClass("selected");
+						    fn_workplaceSelect_tab();
+						});
 					}					
 				});
 			}
 		}
 }
-function fn_companyDelete_tab(){
+function fn_workplaceDelete_tab(){
 	if($("td:nth-child(1)",$($("#datatable1").find('tr.selected')[0])).text().trim()!=''){
 		if(confirm("삭제하시겠습니까?")){
 			$.ajax({						
 				type: 'post',						
-				url : getContextPath()+'/dc/cm/dProcTab.do?companyId='+$("td:nth-child(1)",$($("#datatable1").find('tr.selected')[0])).text().trim(),						
+				url : getContextPath()+'/dc/wm/dProcTab.do?workplaceId='+$("td:nth-child(1)",$($("#datatable1").find('tr.selected')[0])).text().trim(),						
 				dataType: "html",						
 				success: function(data){
 					var content = $("#listDetail");
 					content.empty();
 					content.append(data);	
+					$("#datatable1 tr").click(function () {
+					    $('.selected').removeClass('selected');
+					    $(this).addClass("selected");
+					    fn_workplaceSelect_tab();
+					});
 				}					
 			});		
 		}
@@ -97,7 +101,7 @@ function fn_companyDelete_tab(){
   		return;
 	}
 }
-function fn_companySelect_tab(){
+function fn_workplaceSelect_tab(){
     var companyId = $("td:nth-child(1)",$($("#datatable1").find('tr.selected')[0])).text().trim();
     if(!companyId){
     	alert("사업장을 선택해주세요.");
@@ -105,7 +109,7 @@ function fn_companySelect_tab(){
     }
 	$.ajax({						
 		type: 'post',						
-		url : getContextPath()+'/dc/cm/cruTab.do?companyId='+$("td:nth-child(1)",$($("#datatable1").find('tr.selected')[0])).text().trim(),						
+		url : getContextPath()+'/dc/wm/cruTab.do?workplaceId='+$("td:nth-child(1)",$($("#datatable1").find('tr.selected')[0])).text().trim(),						
 		dataType: "html",						
 		success: function(data){
 			var content = $("#cruDetail");
@@ -136,7 +140,7 @@ function fn_companySelect_tab(){
 							            <span class="kt-header__topbar-icon">저장<!-- <i class="flaticon2-add-1"></i> --></span>
 							        </div>
 							    </div>
-								<div class="kt-header__topbar-item" data-toggle="kt-tooltip" title="" data-placement="right" onclick="javascript:fn_companyDelete_tab();">
+								<div class="kt-header__topbar-item" data-toggle="kt-tooltip" title="" data-placement="right" onclick="javascript:fn_workplaceDelete_tab();">
 							        <div class="kt-header__topbar-wrapper">
 							            <span class="kt-header__topbar-icon">삭제<!-- <i class="flaticon2-trash"></i> --></span>
 							        </div>
@@ -158,7 +162,7 @@ function fn_companySelect_tab(){
 									        추가</a>
 									        <a href="javascript:fn_saveBtnClicked_tab();" class="btn btn-icon btn btn-label btn-label-brand btn-bold saveBtn" data-toggle="kt-tooltip" title="" data-placement="top" data-original-title="추가">
 									        저장</a>
-									        <a href="javascript:fn_companyDelete_tab();" class="btn btn-icon btn btn-label btn-label-brand btn-bold" data-toggle="kt-tooltip" title="" data-placement="top" data-original-title="삭제">
+									        <a href="javascript:fn_workplaceDelete_tab();" class="btn btn-icon btn btn-label btn-label-brand btn-bold" data-toggle="kt-tooltip" title="" data-placement="top" data-original-title="삭제">
 									        삭제</a>
 									    </div>
 									</div>

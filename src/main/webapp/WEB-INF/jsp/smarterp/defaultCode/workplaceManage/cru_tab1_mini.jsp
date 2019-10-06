@@ -81,7 +81,7 @@
 								  값을 입력해주세요.
 								</div>
 								<div class="input-group-append">
-									<span class="input-group-text">></span>
+									<span class="input-group-text">)</span>
 	  							</div>
   							</div>
 							<div class="col-xs-6 col-sm-6 col-md-6 input-group pl-0 ml-0">
@@ -99,7 +99,7 @@
 								  값을 입력해주세요.
 								</div>
 								<div class="input-group-append">
-									<span class="input-group-text">></span>
+									<span class="input-group-text">)</span>
 	  							</div>
   							</div>
 							<div class="col-xs-6 col-sm-6 col-md-6 input-group pl-0 ml-0">
@@ -127,26 +127,24 @@
 								</div>
 							</div>
 						</div>
-					</div>
-					<div class="form-group row">
-						<label class="col-xs-3 col-sm-3 col-md-3 col-form-label">관할세무서</label>
-						<div class="col-xs-3 col-sm-3 col-md-3 input-group pr-0 mr-0">
-							<input class="form-control" type="text" value="${workplace.taxofficeCode}" name="taxofficeCode" required>
-							<div class="invalid-tooltip">
-							  값을 입력해주세요.
+						<div class="form-group row">
+							<label class="col-xs-3 col-sm-3 col-md-3 col-form-label">관할세무서</label>
+							<div class="col-xs-3 col-sm-3 col-md-3 input-group pr-0 mr-0">
+								<input class="form-control" type="text" value="${workplace.taxofficeCode}" name="taxofficeCode" required>
+								<div class="invalid-tooltip">
+								  값을 입력해주세요.
+								</div>
+								<div class="input-group-append">
+									<span class="input-group-text">)</span>
+	  							</div>
 							</div>
-							<div class="input-group-append">
-								<span class="input-group-text">></span>
-  							</div>
- 							</div>
-						<div class="col-xs-6 col-sm-6 col-md-6 input-group pl-0 ml-0">
-							<input class="form-control" type="text" value="${workplace.taxofficeAreaNm}" name="taxofficeAreaNm" required>
-							<div class="invalid-tooltip">
-							  값을 입력해주세요.
-							</div>
-					  </div>
-					</div>
-					<div class="kt-portlet__body border">
+							<div class="col-xs-6 col-sm-6 col-md-6 input-group pl-0 ml-0">
+								<input class="form-control" type="text" value="${workplace.taxofficeAreaNm}" name="taxofficeAreaNm" required>
+								<div class="invalid-tooltip">
+								  값을 입력해주세요.
+								</div>
+						  </div>
+						</div>
 						<div class="form-group row">
 							<label class="col-xs-3 col-sm-3 col-md-3 col-form-label">개업연월일</label>
 							<div class="col-xs-9 col-sm-9 col-md-9">
@@ -162,6 +160,26 @@
 							<div class="col-xs-9 col-sm-9 col-md-9">
 								<fmt:formatDate var="comCloseDStr" value="${workplace.comCloseD}" pattern="yyyy/MM/dd" />
 								<input class="form-control calendar" type="text" value="${comCloseDStr}" name="comCloseD">
+							</div>
+						</div>
+					</div>
+					<div class="kt-portlet__body border">
+						<div class="form-group row">
+							<label class="col-xs-3 col-sm-3 col-md-3 col-form-label">본점여부</label>
+							<div class="col-xs-9 col-sm-9 col-md-9">
+								<select class="form-control" name="isHq">
+									<option value="0" <c:if test="${workplace.isHq=='0'}">selected="selected"</c:if> >0. 부</option>
+									<option value="1" <c:if test="${workplace.isHq=='1'}">selected="selected"</c:if> >1. 본점</option>
+								</select>
+							</div>
+						</div>
+						<div class="form-group row">
+							<label class="col-xs-3 col-sm-3 col-md-3 col-form-label">이행상황신고구분</label>
+							<div class="col-xs-9 col-sm-9 col-md-9">
+								<select class="form-control" name="isImpleStatusReported">
+									<option value="0" <c:if test="${workplace.isImpleStatusReported=='0'}">selected="selected"</c:if> >0. 월별</option>
+									<option value="1" <c:if test="${workplace.isImpleStatusReported=='1'}">selected="selected"</c:if> >1. 연별</option>
+								</select>
 							</div>
 						</div>
 					</div>

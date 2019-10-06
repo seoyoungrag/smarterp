@@ -72,6 +72,11 @@ function fn_saveBtnClicked_tab(){
 						$("input, select", "#comForm").prop('disabled',true);
 						$(".saveBtn").hide();
 						$(".addBtn").show();
+						$("#datatable1 tr").click(function () {
+						    $('.selected').removeClass('selected');
+						    $(this).addClass("selected");
+						    fn_companySelect_tab();
+						});
 					}					
 				});
 			}
@@ -88,6 +93,11 @@ function fn_companyDelete_tab(){
 					var content = $("#listDetail");
 					content.empty();
 					content.append(data);	
+					$("#datatable1 tr").click(function () {
+					    $('.selected').removeClass('selected');
+					    $(this).addClass("selected");
+					    fn_companySelect_tab();
+					});
 				}					
 			});		
 		}
